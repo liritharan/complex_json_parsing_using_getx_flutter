@@ -31,32 +31,24 @@ class _HomeScreenState extends State<HomeScreen> {
           return userdata.isLoading.value ? const CircularProgressIndicator() :
           Column(
             children: [
-               InkWell(
-                  onTap: () {
 
-
-                  },
-                  child:  const Text('Get Value')),
-              SizedBox(
-height: 600,
-                child: ListView.builder(
-                    itemCount: userdata.userModel!.feed.results.length,
-                    itemBuilder: (BuildContext context, int index) {
-                      return ListTile(
+              Expanded(child: ListView.builder(
+                  itemCount: userdata.userModel!.feed.results.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    return ListTile(
                         leading: const CircleAvatar(
                           child: Icon(
                             Icons.account_circle_outlined, color: Colors.amber,
                             size: 35,),
                         ),
                         title: InkWell(
-                            onTap: () {
+                          onTap: () {
 
-                            },
+                          },
 
-                            child:    Text(userdata.userModel!.feed.results[index].name.toString()),)
-                      );
-                    }),
-              ),
+                          child:    Text(userdata.userModel!.feed.results[index].name.toString()),)
+                    );
+                  }),),
             ],
           );
         })
