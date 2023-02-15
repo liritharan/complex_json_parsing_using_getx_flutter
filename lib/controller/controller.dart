@@ -7,8 +7,7 @@ import 'package:http/http.dart' as http;
 
 class UserController extends GetxController {
   var isLoading = false.obs;
- UserModel? userModel;
-
+  UserModel? userModel;
 
   @override
   Future<void> onInit() async {
@@ -16,7 +15,7 @@ class UserController extends GetxController {
     fetchData();
   }
 
- fetchData() async {
+  fetchData() async {
     try {
       isLoading(true);
       http.Response response = await http.get(Uri.parse(
@@ -25,11 +24,10 @@ class UserController extends GetxController {
         ///data successfully
         var result = jsonDecode(response.body);
 
-        userModel = UserModel.fromJson(result)  ;
-      print(userModel!.feed!.results.length);
+        userModel = UserModel.fromJson(result);
+        print(userModel!.feed!.results.length);
         update();
-print(userModel!.feed!.results);
-
+        print(userModel!.feed!.results);
       } else {
         print('error fetching data');
       }
